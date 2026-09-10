@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poster Portfolio</title>
+    <style>
+        /* 1. RESET & GENERAL STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: #fafafa;
+            color: #111;
+            padding: 4rem 2rem;
+        }
+
+        header {
+            max-width: 1400px;
+            margin: 0 auto 4rem auto;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        /* 2. THE EQUAL PORTRAIT GRID */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 perfectly equal columns */
+            gap: 2.5rem; /* Balanced spacing between posters */
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* 3. GRID ITEM CARD */
+        .portfolio-item {
+            position: relative;
+            display: block;
+            width: 100%;
+            aspect-ratio: 3 / 4; /* Keeps every poster exactly 3:4 ratio */
+            background-color: #eaeaea;
+            overflow: hidden;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+            text-decoration: none;
+        }
+
+        /* The Poster Image */
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Crops/fills perfectly without distortion */
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* 4. HOVER OVERLAY EFFECT */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7); /* Dark background veil on hover */
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end; /* Text sits at the bottom */
+            padding: 2rem;
+            opacity: 0; /* Hidden by default */
+            transition: opacity 0.4s ease;
+        }
+
+        /* Overlay Text Content */
+        .overlay h2 {
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            transform: translateY(10px); /* Slight slide-up animation */
+            transition: transform 0.4s ease;
+        }
+
+        .overlay p {
+            color: #ccc;
+            font-size: 0.95rem;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+
+        /* HOVER TRIGGERS */
+        .portfolio-item:hover img {
+            transform: scale(1.05); /* Smooth image zoom */
+        }
+
+        .portfolio-item:hover .overlay {
+            opacity: 1; /* Shows overlay */
+        }
+
+        .portfolio-item:hover .overlay h2,
+        .portfolio-item:hover .overlay p {
+            transform: translateY(0); /* Completes slide-up text */
+        }
+
+        /* 5. RESPONSIVE BREAKPOINTS (Mobile Optimization) */
+        @media (max-width: 1024px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr); /* 2 equal columns on tablets */
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 650px) {
+            body {
+                padding: 2rem 1rem;
+            }
+            header {
+                margin-bottom: 2.5rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr; /* 1 full column on mobile phones */
+                gap: 1.5rem;
+            }
+            /* Persistent text layout on mobile touch screens instead of raw hover */
+            .overlay {
+                opacity: 1;
+                background: linear-gradient(transparent 50%, rgba(0,0,0,0.8));
+            }
+            .overlay h2, .overlay p {
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Poster Portfolio</h1>
+        <p>Selected work focused on typography, print, and branding.</p>
+    </header>
+
+    <main class="portfolio-grid">
+        
+        <!-- POSTER ITEM 1 -->
+        <a href="project-1.html" class="portfolio-item">
+            <img src="images\eiffel_tower.png" alt="Description of Poster 1">
+            <div class="overlay">
+                <h2>Eiffel</h2>
+                <p>First creation / 2026</p>
+            </div>
+        </a>
+
+        <!-- POSTER ITEM 2 -->
+        <a href="project-2.html" class="portfolio-item">
+            <img src="images\james_bond.png" alt="Description of Poster 2">
+            <div class="overlay">
+                <h2>James Bond</h2>
+                <p>Experimental Print / 2025</p>
+            </div>
+        </a>
+
+    </main>
+
+</body>
+</html>
