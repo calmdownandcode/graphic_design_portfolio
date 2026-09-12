@@ -146,6 +146,14 @@
             margin-bottom: 3rem;
         }
 
+        .contact-links {
+            display: flex; /* Lines elements side by side */
+            flex-direction: row; 
+            flex-wrap: nowrap; /* Strictly bars wrapping to lines beneath */
+            overflow-x: auto; /* Adds safe swiping on extreme mini screens instead of breaking layout */
+            white-space: nowrap; /* Prevents raw textual contents from shifting down */
+        }
+
         .about-content .contact-links a {
             color: #ffffff;
             font-weight: 800;
