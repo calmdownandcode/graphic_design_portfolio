@@ -1,0 +1,345 @@
+
+        /* 1. RESET & SYSTEM CORE STYLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #ffffff; /* Stark Swiss white */
+            color: #000000; /* Rich pure black */
+            overflow-x: hidden; /* Essential to handle large typography clipping */
+        }
+
+        /* 2. THE SWISS EDITORIAL HERO SECTION */
+        .hero-section {
+            position: relative;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 8rem 2rem 6rem 2rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr; /* Two-column asymmetrical layout */
+            gap: 4rem;
+            align-items: center;
+        }
+
+        /* Huge Low-Opacity Watermark */
+        .bg-watermark {
+            position: absolute;
+            font-size: clamp(150px, 16vw, 260px); /* Responsive mega type */
+            font-weight: 900;
+            color: #000000;
+            opacity: 0.03; /* Tight 3% subtle density */
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            z-index: 1;
+            pointer-events: none;
+            left: 2rem;
+            top: 2rem;
+            user-select: none;
+        }
+
+        .hero-left {
+            position: relative;
+            z-index: 2; /* Sits cleanly over watermark */
+        }
+
+        .hero-left h1 {
+            font-size: clamp(3.5rem, 6.5vw, 5.5rem); /* Striking magazine size scales up to 88px+ */
+            font-weight: 800;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        /* Fine Editorial Divider */
+        .hero-divider {
+            width: 100%;
+            height: 1px;
+            background-color: #e5e5e5;
+            margin-bottom: 2rem;
+        }
+
+        .hero-description {
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.4;
+            color: #333333;
+            max-width: 600px;
+            margin-bottom: 4rem;
+            letter-spacing: -0.01em;
+        }
+
+        /* Systematic Exhibition Metadata Row */
+        .exhibition-metadata {
+            display: flex;
+            gap: 3rem;
+            border-top: 1px solid #e5e5e5;
+            padding-top: 1.5rem;
+            max-width: 650px;
+        }
+
+        .meta-block {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .meta-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #888888;
+            font-weight: 600;
+        }
+
+        .meta-value {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        /* Hero Right Side — Rotated Framed Showcase */
+        .hero-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .featured-showcase-frame {
+            width: 100%;
+            max-width: 360px; /* Clean size balancing alongside text column */
+            aspect-ratio: 3 / 4;
+            background-color: #eaeaea;
+            overflow: hidden;
+            border-radius: 4px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+            transform: rotate(4deg); /* Swiss exhibition angled mockup look */
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.6s ease;
+        }
+
+        .featured-showcase-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: scale 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Interactive Showcase Hover States */
+        .featured-showcase-frame:hover {
+            transform: rotate(0deg) scale(1.03); /* Straightens smoothly up to focus */
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .featured-showcase-frame:hover img {
+            scale: 1.05;
+        }
+
+        /* 3. THE EQUAL PORTRAIT GALLERY GRID */
+        .grid-header {
+            max-width: 1400px;
+            margin: 4rem auto 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .grid-header h3 {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: #888888;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 1rem;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Grid Item Setup */
+        .portfolio-item {
+            position: relative;
+            display: block;
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            background-color: #eaeaea;
+            overflow: hidden;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); 
+            text-decoration: none;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* Hover Veil Effect */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .overlay h2 {
+            color: #fff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+
+        .overlay p {
+            color: #ccc;
+            font-size: 0.95rem;
+            transform: translateY(10px);
+            transition: transform 0.4s ease;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover .overlay h2,
+        .portfolio-item:hover .overlay p {
+            transform: translateY(0);
+        }
+
+        /* 4. BLACK & WHITE BOLD STACKED FOOTER */
+        footer {
+            width: 100%;
+            background-color: #000000;
+            color: #ffffff;
+            margin-top: 10rem; /* Expansive breathing gap below images */
+            padding: 8rem 2rem; 
+            clear: both;
+        }
+
+        .footer-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column; 
+            gap: 2.5rem;
+        }
+
+        .about-title h2 {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+
+        .about-content p {
+            font-size: 1.4rem;
+            line-height: 1.6;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 3rem;
+            max-width: 900px;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: row; 
+            flex-wrap: nowrap; 
+            overflow-x: auto; 
+            white-space: nowrap; 
+        }
+
+        .contact-links a {
+            color: #ffffff;
+            font-weight: 800;
+            text-decoration: none;
+            margin-right: 2.5rem;
+            border-bottom: 3px solid #ffffff; 
+            padding-bottom: 6px;
+            transition: opacity 0.2s ease;
+            display: inline-block;
+        }
+
+        .contact-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* 5. RESPONSIVE MEDIA QUERIES */
+        @media (max-width: 1024px) {
+            .hero-section {
+                gap: 2rem;
+                padding-top: 6rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                grid-template-columns: 1fr; /* Stacks text column above poster image element */
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+                gap: 4rem;
+            }
+            .hero-right {
+                justify-content: flex-start; /* Aligns clean left on mobile columns */
+            }
+            .featured-showcase-frame {
+                max-width: 280px;
+            }
+            .exhibition-metadata {
+                gap: 1.5rem;
+                flex-wrap: wrap; /* Safe wrapping for narrow phone viewport grids */
+            }
+            footer {
+                margin-top: 6rem;
+                padding: 5rem 1.5rem;
+            }
+            .about-title h2 {
+                font-size: 2rem;
+            }
+            .about-content p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+            .grid-header {
+                padding: 0 1rem;
+            }
+            .overlay {
+                opacity: 1;
+                background: linear-gradient(transparent 50%, rgba(0,0,0,0.8));}
+                
+            .overlay h2, .overlay p {transform: translateY(0);}}
